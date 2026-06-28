@@ -1,15 +1,17 @@
 -- package manager
 vim.pack.add({
-	{src = 'https://github.com/nvim-telescope/telescope.nvim',
-	dependencies = {
-		{src = 'https://github.com/nvim-lua/plenary.nvim'},
-		{src ='https://github.com/nvim-telescope/telescope-fzf-native.nvim', build = 'make'}}
+	{
+		src = 'https://github.com/nvim-telescope/telescope.nvim',
+		dependencies = {
+			{ src = 'https://github.com/nvim-lua/plenary.nvim' },
+			{ src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', build = 'make' } }
 	},
-	{src = 'https://github.com/nvim-lua/plenary.nvim'},
-	{src = 'https://github.com/mason-org/mason.nvim'},
-	{src = 'https://github.com/neovim/nvim-lspconfig'},
-	{src = 'https://github.com/nvim-mini/mini.nvim'},
-	{src = 'https://github.com/rafamadriz/friendly-snippets'}
+	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
+	{ src = 'https://github.com/mason-org/mason.nvim' },
+	{ src = 'https://github.com/neovim/nvim-lspconfig' },
+	{ src = 'https://github.com/nvim-mini/mini.nvim' },
+	{ src = 'https://github.com/rafamadriz/friendly-snippets' },
+	{ src = 'https://github.com/mikavilpas/yazi.nvim'}
 })
 
 require("mini.notify").setup({
@@ -50,4 +52,4 @@ require("mini.snippets").setup({
 	},
 })
 
-require("mini.snippets").start_lsp_server({match = false})
+require("mini.snippets").start_lsp_server({ match = false })

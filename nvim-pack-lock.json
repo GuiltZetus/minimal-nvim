@@ -27,6 +27,10 @@
     "telescope.nvim": {
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "yazi.nvim": {
+      "rev": "62fdb474b91c2e99a3a1b4220b79dddc16e808d0",
+      "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
 }
