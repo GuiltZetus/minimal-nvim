@@ -1,5 +1,32 @@
-vim.keymap.set("n", "<C-n>", function() require("yazi").yazi() end)
+-- DEBUGGER
+local dap = require('dap')
+vim.keymap.set("n", "<leader>b", function() dap.toggle_breakpoint() end)
+vim.keymap.set("n", "<F5>", function() dap.continue() end)
+vim.keymap.set("n", "<F8>", function() dap.terminate() end)
+vim.keymap.set("n", "<F10>", function() dap.step_over() end)
+vim.keymap.set("n", "<F11>", function() dap.step_into() end)
+vim.keymap.set("n", "<F12>", function() dap.step_out() end)
 
+
+-- SESSIONS
+vim.keymap.set("n", "<leader>sn", function()
+  vim.ui.input({ prompt = "Session name: " }, function(name)
+    if name and name ~= "" then
+			vim.cmd("wa")
+      require("mini.sessions").write(name)
+    end
+  end)
+end)
+
+vim.keymap.set("n", "<leader>ss", function()
+	vim.cmd("wa")
+	require("mini.sessions").write()
+end)
+
+vim.keymap.set("n", "<leader>sl", function() require("mini.sessions").select() end)
+
+-- FILE EXPLORER
+vim.keymap.set("n", "<C-n>", function() require("yazi").yazi() end)
 vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
@@ -10,6 +37,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
 })
 
 
+-- Telescope
 require('telescope').setup({
 	mappings = {
 		n = {
@@ -24,8 +52,7 @@ vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = 'Telescope live 
 vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set("n", "<leader>fd", telescope.diagnostics, {desc = 'Telescope diagnostic'})
-vim.keymap.set("n", "<leader>fr", telescope.lsp_references ,{desc = 'Telescope reference'})
--- vim.keymap.set("n", "<C-v>", telescope.select_vertical ,{desc = 'Telescope reference'})
+vim.keymap.set("n", "grr", telescope.lsp_references ,{desc = 'Telescope reference'})
 
 --replaces text without losing yanked
 vim.keymap.set("x", "p", [["_dP"]])
@@ -53,7 +80,8 @@ vim.keymap.set("n", "n", "Nzzzv")
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>rc", "<cmd>restart<cr>")
 
-vim.keymap.set("n", "<leader>u",
+--Undo history
+vim.keymap.set("n", "<leader>uh",
 function()
 	vim.cmd.packadd("nvim.undotree")
 	require("undotree").open()
