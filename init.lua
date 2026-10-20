@@ -4,6 +4,7 @@ require("pack")
 require("options")
 require("keymaps")
 require("plugins-config")
+require("unity")
 
 -- local paths_to_check = { "", "\\.." }
 -- local is_godot_project = false

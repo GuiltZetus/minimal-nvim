@@ -11,8 +11,9 @@ vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 
 vim.diagnostic.config({
 	virtual_text = true,
-	underline = true,
-	update_in_insert = true
+	-- underline = true,
+	-- update_in_insert = true,
+	-- signs = false,
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -29,10 +30,12 @@ vim.lsp.config('lua_ls', {
 })
 
 vim.lsp.config('gdscript', {})
+
+
 vim.lsp.config('clangd', {
 	cmd =	{
 		"clangd",
-		-- "--query-driver=C:/msys64/ucrt64/bin/*.exe",
+		"--query-driver=C:/msys64/ucrt64/bin/*.exe",
 		"-j=16",
 	},
 })
