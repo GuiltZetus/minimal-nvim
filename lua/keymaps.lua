@@ -6,6 +6,7 @@ vim.keymap.set("n", "<F8>", function() dap.terminate() end)
 vim.keymap.set("n", "<F10>", function() dap.step_over() end)
 vim.keymap.set("n", "<F11>", function() dap.step_into() end)
 vim.keymap.set("n", "<F12>", function() dap.step_out() end)
+vim.keymap.set("n", "<leader>du", function() require("dapui").toggle() end, { desc = "Toggle DAP UI" })
 
 
 -- SESSIONS
