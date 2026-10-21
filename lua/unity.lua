@@ -10,6 +10,11 @@
 -- NEOVIM UNITY GLOBALS
 --------------------------------------------------------------------------------
 
+
+local roslyn_path = "C:/roslyn_ls/content/LanguageServer/win-x64/Microsoft.CodeAnalysis.LanguageServer.exe"
+local unity_dap_path = "C:/unity_dap/unity-debug-adapter.exe"
+local unity_project_path = ""
+
 -- these globals are set by Neovim Unity plugin: com.walcht.ide.neovim upon the
 -- instantiation of a Neovim server instance. These are set to themselves
 -- because they are expected to be set via "nvim --cmd '<var> = <value>'" and
@@ -463,7 +468,7 @@ local roslyn_ls_config = {
   offset_encoding = "utf-8",
   cmd = {
     -- on Windows, you can simply directly call the executable:
-     "C:/roslyn_ls/content/LanguageServer/win-x64/Microsoft.CodeAnalysis.LanguageServer.exe",
+     roslyn_path,
     --  <roslyn-ls-path> is a placeholder for the path to the Roslyn LS dir
     -- "dotnet",
     -- "C:/roslyn_ls/content/LanguageServer/win-x64/Microsoft.CodeAnalysis.LanguageServer.dll",
@@ -584,7 +589,7 @@ dap.adapters.unity = function(cb, config)
     type = "executable",
     -- adjust unity-debug-adapter.exe path (don't forget to `chmod +x` it)
     -- get Unity debug adapter from: https://github.com/walcht/unity-dap
-    command = "C:/unity_dap/unity-debug-adapter.exe",
+    command = unity_dap_path,
     args = {
       -- optional log level argument: trace | debug | info | warn | error | critical | none
       "--log-level=warn",
